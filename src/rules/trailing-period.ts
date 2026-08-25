@@ -4,7 +4,7 @@ export class TrailingPeriodRule implements Rule {
   readonly name = "message.trailing-period";
 
   check(ctx: RuleContext): Violation[] {
-    if (ctx.normalizedMessage.endsWith(".")) {
+    if (ctx.originalMessage.trimEnd().endsWith(".")) {
       return [
         {
           rule: this.name,

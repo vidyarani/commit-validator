@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { TrailingPeriodRule } from "../../../src/rules/trailing-period.js";
-import type { RuleContext, SignalVector, ParsedMessage } from "../../../src/domain/types.js";
+import type { RuleContext, ParsedMessage } from "../../../src/domain/types.js";
 
 function ctx(normalized: string): RuleContext {
   const parsed: ParsedMessage = { subject: normalized, body: null };
