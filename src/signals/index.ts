@@ -10,7 +10,3 @@ export function extractSignals(parsed: ParsedMessage): SignalVector {
     vagueness: extractVagueness(parsed),
   };
 }
-
-export { extractLexical } from "./lexical.js";
-export { extractVerb } from "./verbs.js";
-export { extractVagueness } from "./vagueness.js";

@@ -32,22 +32,12 @@ const DEFAULT_GENERIC_PHRASES = [
   "other changes",
 ];
 
-export function extractVagueness(
-  parsed: ParsedMessage,
-  options?: {
-    vagueWords?: Set<string>;
-    genericPhrases?: string[];
-  },
-): VaguenessSignals {
+export function extractVagueness(parsed: ParsedMessage): VaguenessSignals {
   const subject = parsed.subject.toLowerCase();
   const words = subject.split(/\s+/).filter(Boolean);
 
-  const vagueWords = words.filter((w) =>
-    (options?.vagueWords ?? DEFAULT_VAGUE_WORDS).has(w),
-  );
-
-  const phrases = options?.genericPhrases ?? DEFAULT_GENERIC_PHRASES;
-  const genericPhrases = phrases.filter((p) => subject.includes(p));
+  const vagueWords = words.filter((w) => DEFAULT_VAGUE_WORDS.has(w));
+  const genericPhrases = DEFAULT_GENERIC_PHRASES.filter((p) => subject.includes(p));
 
   return { vagueWords, genericPhrases };
 }
