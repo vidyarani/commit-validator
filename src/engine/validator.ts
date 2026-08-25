@@ -2,6 +2,9 @@ import { normalize } from "../domain/normalizer.js";
 import { parse } from "../domain/parser.js";
 import { extractSignals } from "../signals/index.js";
 import { MinLengthRule } from "../rules/min-length.js";
+import { VagueContentRule } from "../rules/vague-content.js";
+import { ImperativeVerbRule } from "../rules/imperative-verb.js";
+import { TrailingPeriodRule } from "../rules/trailing-period.js";
 import type { Report, Severity } from "../domain/types.js";
 
 const PENALTY: Record<Severity, number> = {
@@ -12,8 +15,12 @@ const PENALTY: Record<Severity, number> = {
 
 const severityOrder: Record<Severity, number> = { error: 0, warn: 1, info: 2 };
 
-// Built-in rules — instantiated fresh per validation run
-const BUILT_IN_RULES = [new MinLengthRule()];
+const BUILT_IN_RULES = [
+  new MinLengthRule(),
+  new VagueContentRule(),
+  new ImperativeVerbRule(),
+  new TrailingPeriodRule(),
+];
 
 export function validateCommit(text: string): Report {
   const normalized = normalize(text);
