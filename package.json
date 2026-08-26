@@ -21,8 +21,7 @@
     "git",
     "lint"
   ],
-  "author": "",
-  "license": "MIT",
+  "author": "Vidya Rani",
   "engines": {
     "node": ">=20"
   },

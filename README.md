@@ -79,7 +79,3 @@ npm run lint      # Run ESLint
 npm run typecheck # Run TypeScript type checking
 npm run build     # Build to dist/
 ```
-
-## License
-
-MIT
